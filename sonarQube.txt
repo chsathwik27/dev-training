@@ -1,0 +1,34 @@
+
+before  sonar Qube we have coberclura, checkstyle,findbugs,prisma cloud,hp tool, used to integrate with maven tool
+
+sonar Qube:
+
+Quality profile(set of rules) and Quality gate(check point/conditions) using this it will generate analysis report
+
+has plugins to analyse
+
+static code analysis : 
+
+java ,.net ,python any programming lang 
+it will analyse and generate a report
+
+benefits: 
+
+
+Define gate:
+
+test coverage : 60% then only into prodution
+
+major bug less than 5 then into prodution
+
+search sonal rules for any programminglang in web to check for the rules
+
+sonarQube download from google
+
+https://www.sonarqube.org/downloads/
+
+download postgreSql or MySql
+
+https://www.postgresql.org/download/windows/
+
+

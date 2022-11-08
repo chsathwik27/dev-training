@@ -1,0 +1,8 @@
+  
+  
+  jenkins:
+  ----------
+  https://www.jenkins.io/doc/book/installing/windows/
+
+
+https://www.jenkins.io/download/thank-you-downloading-windows-installer-stable/

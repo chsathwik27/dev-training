@@ -1,0 +1,1658 @@
+
+Linux: 
+ open source os 
+ 
+ unix(os)---->source code---->rhel
+						     ubuntu
+						     centos
+						     fedora
+						     susi
+						     amazon
+						   
+DEBIAN					  REDHAT FAMILY
+ubuntu					   centos
+						   rhel
+						   fedora
+						   amazon linux
+						   
+apt-get install 		   in redhat to install packages
+						   we use yum install 
+						   
+						  
+Create instance in AWS linux
+ 
+ using putty or git get into terminal with default user@ip-172-31-93-25
+  
+ [ec2-user@ip-172-31-93-25 ~]$------>dollar symbol indicate normal user
+  usr name   hostname      user                   not all permisssions
+             ip address    home
+			               directory
+						   
+						   
+To set hostname:
+----------------
+hostnamectl set-hostname <new hostname>
+---------------------------------------------
+						   
+switch to root user :
+----------------------
+ sudo su - root
+ 
+ [root@ip-172-31-93-25 ~]#----> indicate root / admin user /super user
+									all permisssions
+
+back to normal user 
+
+ command exit or su - <usr name>
+ 
+ [ec2-user@ip-172-31-93-25 ~]$ 
+ 
+ add user
+ 
+ [ec2-user@ip-172-31-93-25 ~]$ adduser <username>
+ 
+ [ec2-user@ip-172-31-93-25 ~]$ adduser sathwik
+-bash: /usr/sbin/adduser: Permission denied
+
+by using sudo can have temporary permisssion
+
+[ec2-user@ip-172-31-93-25 ~]$ sudo adduser sathwik
+
+when we get into terminal like windows we have c drive etc
+
+in this we have file system hirarchy
+
+[ec2-user@ip-172-31-93-25 ~]$ cd /
+[ec2-user@ip-172-31-93-25 /]$
+                          top level under this(/ ---->indicates root)
+											   (/root ---->root user home directory)
+						  have( file hirarchy and directories)
+[ec2-user@ip-172-31-93-25 /]$ ll	
+
+total 16
+lrwxrwxrwx   1 root root    7 Oct 12 18:54 bin -> usr/bin
+dr-xr-xr-x   4 root root 4096 Oct 28 10:19 boot
+drwxr-xr-x  15 root root 2900 Oct 29 05:57 dev
+drwxr-xr-x  81 root root 8192 Oct 29 06:21 etc
+drwxr-xr-x   4 root root   37 Oct 29 06:21 home (normaluser home directory)
+lrwxrwxrwx   1 root root    7 Oct 12 18:54 lib -> usr/lib
+lrwxrwxrwx   1 root root    9 Oct 12 18:54 lib64 -> usr/lib64
+drwxr-xr-x   2 root root    6 Oct 12 18:53 local
+drwxr-xr-x   2 root root    6 Apr  9  2019 media
+drwxr-xr-x   2 root root    6 Apr  9  2019 mnt
+drwxr-xr-x   4 root root   27 Oct 12 18:57 opt
+dr-xr-xr-x 160 root root    0 Oct 29 05:57 proc
+dr-xr-x---   3 root root  103 Oct 28 10:18 root  (root user home directory)
+drwxr-xr-x  28 root root  960 Oct 29 05:58 run
+lrwxrwxrwx   1 root root    8 Oct 12 18:54 sbin -> usr/sbin
+drwxr-xr-x   2 root root    6 Apr  9  2019 srv
+dr-xr-xr-x  13 root root    0 Oct 29 05:57 sys
+drwxrwxrwt   8 root root  172 Oct 29 06:21 tmp
+drwxr-xr-x  13 root root  155 Oct 12 18:54 usr
+drwxr-xr-x  19 root root  269 Oct 28 10:17 var
+
+						  
+
+
+all created users will be seen in normal user home directory
+
+[ec2-user@ip-172-31-93-25 /]$ cd home
+[ec2-user@ip-172-31-93-25 home]$ ll
+total 0
+drwx------ 4 ec2-user ec2-user 109 Oct 28 10:24 ec2-user
+drwx------ 2 sathwik  sathwik   62 Oct 29 06:21 sathwik
+[ec2-user@ip-172-31-93-25 home]$
+
+
+/etc-----> os related /any configuration related information stored in this directory
+
+example
+
+[ec2-user@ip-172-31-93-25 /]$ cd /etc/
+[ec2-user@ip-172-31-93-25 etc]$ ll
+total 1112
+drwxr-xr-x  4 root root       35 Oct 12 18:56 acpi
+-rw-r--r--  1 root root       16 Oct 12 18:58 adjtime
+-rw-r--r--  1 root root     1518 Jun  7  2013 aliases
+-rw-r--r--  1 root root    12288 Oct 28 10:17 aliases.db
+drwxr-xr-x  2 root root     4096 Oct 12 18:57 alternatives
+drwxr-xr-x  3 root root       17 Oct 12 18:56 amazon
+
+/boot/----->when we start any system bootable files are stored
+
+/dev/----->device related information 
+
+[ec2-user@ip-172-31-93-25 /]$ cd /dev/
+[ec2-user@ip-172-31-93-25 dev]$ ll
+total 0
+crw-r--r-- 1 root root     10, 235 Oct 29 05:57 autofs
+drwxr-xr-x 2 root root          80 Oct 29 05:57 block
+crw------- 1 root root     10, 234 Oct 29 05:57 btrfs-control
+drwxr-xr-x 2 root root        2400 Oct 29 05:57 char
+crw------- 1 root root      5,   1 Oct 29 05:57 console
+lrwxrwxrwx 1 root root          11 Oct 29 05:57 core -> /proc/kcore
+drwxr-xr-x 3 root root          60 Oct 29 05:57 cpu
+crw------- 1 root root     10,  61 Oct 29 05:57 cpu_dma_latency
+crw------- 1 root root     10, 203 Oct 29 05:57 cuse
+drwxr-xr-x 7 root root         140 Oct 29 05:57 disk
+
+ 
+/var/----->indicates directories(contails all variable data)
+example : when we run any application if we found error we check logs 
+[ec2-user@ip-172-31-93-25 /]$ cd /var/
+[ec2-user@ip-172-31-93-25 var]$ ll
+total 8
+drwxr-xr-x  2 root root   19 Oct 12 18:56 account
+drwxr-xr-x  2 root root    6 Apr  9  2019 adm
+drwxr-xr-x  6 root root   63 Oct 12 18:57 cache
+drwxr-xr-x  3 root root   18 Oct 12 18:56 db
+drwxr-xr-x  3 root root   18 Oct 12 18:56 empty
+drwxr-xr-x  2 root root    6 Apr  9  2019 games
+drwxr-xr-x  2 root root    6 Apr  9  2019 gopher
+drwxr-xr-x  3 root root   18 Oct 12 18:55 kerberos
+drwxr-xr-x 30 root root 4096 Oct 12 18:58 lib
+drwxr-xr-x  2 root root    6 Apr  9  2019 local
+lrwxrwxrwx  1 root root   11 Oct 12 18:54 lock -> ../run/lock
+drwxr-xr-x  7 root root 4096 Oct 29 06:21 log
+lrwxrwxrwx  1 root root   10 Oct 12 18:54 mail -> spool/mail
+drwxr-xr-x  2 root root    6 Apr  9  2019 nis
+drwxr-xr-x  2 root root    6 Apr  9  2019 opt
+drwxr-xr-x  2 root root    6 Apr  9  2019 preserve
+lrwxrwxrwx  1 root root    6 Oct 12 18:53 run -> ../run
+drwxr-xr-x  9 root root   97 Oct 12 18:57 spool
+drwxrwxrwt  3 root rcd
+oot   85 Oct 29 05:57 tmp
+drwxr-xr-x  2 root root    6 Apr  9  2019 yp
+
+/bin   ---->all normal user binary executable commands
+example
+-rwsr-xr-x 1 root root       27776 Feb 13  2020 passwd
+-er user binary executable commands are stored
+
+/opt/------>optional directory to store any software
+
+/usr/----->if we install any tool/packages like git it is stored in this location
+
+/tmp/----->temporary to store data
+
+/mnt/-----> for example if we partition  c or d drive it will take this mnt point
+
+/lib/---->stores default system lib
+
+/proc/----->  what are running in background (all process info like task manager)
+
+
+
+
+
+
+Architecture
+---------------
+hardware<----kernal<-----shell<-----cmd/terminal(command is given)
+
+hardware----->kernal------>shell-----> gives output
+
+when we pass command using terminal 
+hardware<----kernal<-----shell<-----cmd/terminal(command is given)
+example
+
+pwd ---present working directoryit checks the command exits then output is shown
+
+output : /
+hardware----->kernal------>shell-----> gives output
+
+
+pwe ----checks and shows error --command not found
+
+
+kernal is heart operating system ---- task scheduling
+									  resource management
+									  security related
+									  
+when we use command TOP
+
+all process work in background
+ 
+ all managed by kernal.
+ 
+cronjob is handled by kernal
+ 
+shell--> for every os we have default shell 
+
+[ec2-user@ip-172-31-93-25 ~]$ echo $0
+-bash-------------->bash shell
+[ec2-user@ip-172-31-93-25 ~]$
+
+these are shells
+
+[ec2-user@ip-172-31-93-25 ~]$ cat /etc/shells
+/bin/sh
+/bin/bash
+/usr/bin/sh
+/usr/bin/bash
+/bin/tcsh
+/bin/csh
+ 
+echo $SHELL	----->what shell we are using
+
+------------------------------------
+to change hostname
+
+hostnamectl set-hostname <desiredhostname>
+
+----------------------------------------
+
+
+where ever location we if we give command cd
+it goes root or user
+
+[ec2-user@ip-172-31-93-25 etc]$ cd
+[ec2-user@ip-172-31-93-25 ~]$ cd /etc/
+[ec2-user@ip-172-31-93-25 etc]$ pwd
+/etc
+[ec2-user@ip-172-31-93-25 etc]$ cd
+[ec2-user@ip-172-31-93-25 ~]$ pwd
+/home/ec2-user
+[ec2-user@ip-172-31-93-25 ~]$
+
+
+[ec2-user@ip-172-31-93-25 ~]$ cd -
+
+with this command will get into previous location.
+
+
+[ec2-user@ip-172-31-93-25 ~]$ cd ..
+
+with this command one location back
+`
+ [ec2-user@ip-172-31-93-25 ~]$ cd ../../----->two steps back
+							   cd ../../../--->three steps back
+							   
+ command 'ls' ---->list shown
+ 
+ [root@ip-172-31-93-25 /]# ls
+bin   dev  home  lib64  media  opt   root  sbin  sys  usr
+boot  etc  lib   local  mnt    proc  run   srv   tmp  var
+
+ command 'll' ---->long list
+
+ [root@ip-172-31-93-25 /]# ll
+total 16
+lrwxrwxrwx   1 root root    7 Oct 12 18:54 bin -> usr/bin
+dr-xr-xr-x   4 root root 4096 Oct 28 10:19 boot
+drwxr-xr-x  15 root root 2900 Oct 29 05:57 dev
+drwxr-xr-x  81 root root 8192 Oct 29 06:21 etc
+
+  command 'ls -lrt' ----->lrt(timestamp ,reverse order
+  [root@ip-172-31-93-25 /]#  ls -lrt
+total 16
+drwxr-xr-x   2 root root    6 Apr  9  2019 srv
+drwxr-xr-x   2 root root    6 Apr  9  2019 mnt
+drwxr-xr-x   2 root root    6 Apr  9  2019 media
+drwxr-xr-x   2 root root    6 Oct 12 18:53 local
+
+to print reverse reverse alphabetical order latest created at bottom when more files are there
+
+
+
+command 'man ls'----->gives help or information of command ls
+        'man pwd'
+		man gives any particular command info or help
+
+command 'hostname'
+
+[root@ip-172-31-93-25 /]# hostname
+ip-172-31-93-25.ec2.internal
+
+command 'uname'---->on which os we are in
+[root@ip-172-31-93-25 /]# uname
+Linux
+
+to see ip address use command 'ifconfig -a'
+							  'ip addr'
+							  'ip a'
+
+
+to switch user
+
+command 'su - username'
+
+Creation of files
+------------------
+command touch(to create zero size file)
+1.syntax---->touch <filename>,
+  touch f1 f2 f3(multiple files)
+  touch f1{1..10}(multiple files)
+  
+[ec2-user@ip-172-31-93-25 ~]$ touch f1{1..10}
+[ec2-user@ip-172-31-93-25 ~]$ ll
+total 0
+-rw-rw-r-- 1 ec2-user ec2-user 0 Oct 29 13:08 f11
+-rw-rw-r-- 1 ec2-user ec2-user 0 Oct 29 13:08 f110
+-rw-rw-r-- 1 ec2-user ec2-user 0 Oct 29 13:08 f12
+-rw-rw-r-- 1 ec2-user ec2-user 0 Oct 29 13:08 f13
+-rw-rw-r-- 1 ec2-user ec2-user 0 Oct 29 13:08 f14
+-rw-rw-r-- 1 ec2-user ec2-user 0 Oct 29 13:08 f15
+-rw-rw-r-- 1 ec2-user ec2-user 0 Oct 29 13:08 f16
+-rw-rw-r-- 1 ec2-user ec2-user 0 Oct 29 13:08 f17
+-rw-rw-r-- 1 ec2-user ec2-user 0 Oct 29 13:08 f18
+-rw-rw-r-- 1 ec2-user ec2-user 0 Oct 29 13:08 f19
+---------------------------------------------------------
+        
+2.syntax----> cat > filename (after entering data to exit and save ctlr+d)
+	
+3.vi editor
+
+syntax --->vi filename
+  command mode : can do  paste---->p,2p(paste below copied line)
+								   P,2P(paste above copied line)
+                         copy--> press yy, 8yy to copy lines
+						 undo changes---->u
+						 delete---->dw , x(character) ,dd(entire line) 2dd( two lines)
+						 search data-----> press /type word then press n
+						 shift + g(bottom)
+						 gg(beginning line)
+						 w (move cursor forward), 5 word forward ---->5w
+						 b (back word by word), 3b---->3words back
+						 
+  
+  insert mode (press i get into insert mode)(edit or new data in file)
+  esc mode or ex mode  (shift  :wq/wq!)save and exit/forcefully
+                       (shift :q!)quit forcefully
+					   (shift :w)to save
+					   (shift : se nu)to find line numbers
+					   (shift :se nonu)to unset line numbers
+					   (shift :1,$s/old word/new word/g )replace
+							  1-- first $s--last line  g--globally(entire file)
+to view any file 
+-----------------
+cat filenamethe
+   
+to append data to existing data
+-------------------------------
+cat >> exisiting filename
+
+cat > exisiting filename
+
+if we use cat > exisiting filename
+then the data in exisiting file lost and new data is stored in the file
+		
+		
+		
+how to identify file and directory
+---------------------------------------
+
+d   r-x  r-x  r-x    13         root root    0 Oct 29 05:57 sys---->starts with d indicates directory
+dir permisssions   no of links  user grpn   size timestamp
+
+after creating file test1 using touch command
+- rw- r-- r--   1 root root    0 Oct 29 12:36 test1----->starts with dash(-) indicate file
+
+creating directory
+-------------------
+mkdir <dirname>
+
+creating multiple directory with one command line
+--------------------------------------------------\
+mkdir d1 d2 d3
+
+cearting sub directories
+-------------------------
+mkdir -p <d1>/<d2>/<d3>
+
+to check hidden files
+---------------------
+ls -al
+
+hidden files are prefixed with '.'
+
+[ec2-user@ip-172-31-93-25 ~]$ ls -al
+total 16
+drwx------ 4 ec2-user ec2-user 109 Oct 28 10:24 .
+drwxr-xr-x 5 root     root      50 Oct 29 10:14 ..
+-rw------- 1 ec2-user ec2-user 560 Oct 29 12:27 .bash_history
+-rw-r--r-- 1 ec2-user ec2-user  18 Jul 15  2020 .bash_logout
+-rw-r--r-- 1 ec2-user ec2-user 193 Jul 15  2020 .bash_profile
+-rw-r--r-- 1 ec2-user ec2-user 231 Jul 15  2020 .bashrc
+drwx------ 3 ec2-user root      25 Oct 28 10:20 .cache
+drwx------ 2 ec2-user ec2-user  29 Oct 28 10:18 .ssh
+
+to check hirarchy of directories using tree command
+----------------------------------------------------
+[ec2-user@ip-172-31-93-25 ~]$ tree a
+a
+└── b
+    └── c
+        └── d
+            └── e
+                └── f
+                    └── g
+
+to remove any files or directories
+----------------------------------
+remove a file 
+
+rm filename (here it ll ask to delete confirmation)
+rm -rf filename(rf--- recursive forcefully without any confirmationit will delete)
+
+
+delete directories
+---------------------
+rm direname(delete directory)
+
+where as directory has content or sub directories to be deleted
+-----------
+rm -rf dirname
+
+copy 
+----------\
+ syntax: 
+ 
+ cp <src path/filename> <dst path> 
+ 
+ 
+to search file using linux command
+----------------------------------
+ ll | grep -i passwd
+ 
+copy current working directory to root
+-----------------------------
+cp <src path/filename> <.>---indicates root 
+
+copy directory 
+---------------
+cp -r <src path/dir name> <dst path>(r----> indicates recursive)
+
+ To copy all data(files and directories in diretory to be copied in another location
+ ---------------
+ cp -r <src path/*> <dst path> ----> *--- indicates all the data in the directory
+ 
+ cp -rv <src path/*> <dst path>(v--->indicates show what are all data copied in dst location be displayed in command terminal in detail)
+ 
+ ----------------
+ when a file is copied to desination file the time stamp of the copied file in destination will change to the time it got copied
+ but need same time of the file it is created and time stamp should not change 
+ 
+ cp -p <src path/filename> <dst path>(-p-----> indicates preserve)
+ 
+ ------------------
+ to copy a directory  ,
+ and the command that executes is shown on terminal  screen ,
+ and the timestamp should be same  
+ do forcefully
+
+cp -rvpf <src path/dirname> <dst name> 
+
+------------------------
+mv command-
+---------
+rename files and directories
+
+mv <old name> <new name>
+
+to move or cut file or directories from one location to another location
+
+mv <src path/file name> <dst path>
+
+----------------------------------------
+to see data in a file
+----------------------
+1)cat filename(directly the data is scrolled the cursor at bottom)
+
+2)head filename------>top 10 lines will be displayed(default)
+ ex:  head -20 filename ----------->for 20 lines (custom lines )                  
+
+3)tail filename -------->bottom 10 lines
+  ex:  tail -20 filename------>bottom custom lines will be displayed
+   
+4)if lot of data is there how to see
+   
+  more filename (by this with help of enter button the screen will be scrolled )
+
+  less filename (we can use up or down arrow to scroll)(can search any word by typing q enter it will quit)
+  
+------------------------------------------------
+ 
+ three types of permissions for file or directory
+ 
+ owner ----> u
+ group-----> g
+ others-----> o
+ 
+ r-----read----4
+ w-----write---2
+ x-----execute--1
+ 
+ normal usr:
+ -------------
+ 
+ d rwx rwx r-x(directory) normal user
+    u   g   o
+    7   7   5 (default permission value)--->775
+	7   7   7 (max permission value 777) umask value of normal user 002
+										777-002=775
+	
+	
+	
+- rw- rw- r--	(file ) normal user 
+   6   6  4 	(default permission for normal user) based on u mask value(002)
+   6   6  6     (max permission for normal user)
+   
+   command--->umask----->output--> (002)(666-002=664 normal user defalut permission)
+   
+---------------------------------------------   
+
+for root user 
+
+command---># umask ---->022
+
+umask value ---> 022
+
+rw- r-- r--
+6    4   4   (defalut permission value for a file) 666-022= 644
+
+6    6   6     (max permission value) for file
+
+for directory for root user
+-------------
+umask value ---->022
+rwx r-x r-x
+7    5   5   (defalut value for root user)777-022=755
+7    7   7    (max permssion) for directory
+
+----------------------------------------------
+				chmod
+ 1) numerical way     2)symbolic way
+ 
+ -----------------------------------------------
+---------------------------------------------------------
+to change permissions
+
+ (numerical way)
+rw- r-- r--. 1 root root 0 oct 6 03:55 filename  
+6    4   4
+
+$ chmod 652 filename     
+
+rw- r-x -w-. 1 root root 0 oct 6 03:55 filename
+
+rwx r-x r-x. 1 root root 0 oct 6 03:55 dirname
+ 7    5  5
+ ---------------
+ changing permission to directory
+ 
+ chmod 777 dirname
+ 
+ rwx rwx rwx. 1 root root 0 oct 6 03:55 dirname
+  7   7   7
+---------------------------------------------------
+
+symbolic link(used in real time)
+------------------
+chmod u+ --- add
+      u- --- sub permission
+	  u= --- defalut permission
+--x -w- r--. 1 root root 
+  1  2   4
+chmod u+rwx,g+wx,o+rx filename
+
+-------------------------------------
+
+using command chmod changing permission of a directory 
+
+chmod 734 a -----> here the directory permissions are changed 
+
+while coming to sub directories a ,permissions are not changed it will have default directory permissions
+
+To change sub directories permissions 
+-------------------------------
+
+chmod -R 734 a ---->R indicates recursive
+
+------------------------------------------------
+to change user name :of a1 file 
+syntax :
+chown <username> <file name>
+[root@ip-172-31-93-25 ~]# ll
+total 0
+-rw-r--r-- 1 root root 0 Nov  5 08:08 f11
+-rw-r--r-- 1 root root 0 Nov  5 08:08 f110---->user is root
+-rw-r--r-- 1 root root 0 Nov  5 08:08 f12
+-rw-r--r-- 1 root root 0 Nov  5 08:08 f13
+-rw-r--r-- 1 root root 0 Nov  5 08:08 f14
+-rw-r--r-- 1 root root 0 Nov  5 08:08 f15
+-rw-r--r-- 1 root root 0 Nov  5 08:08 f16
+-rw-r--r-- 1 root root 0 Nov  5 08:08 f17
+-rw-r--r-- 1 root root 0 Nov  5 08:08 f18
+-rw-r--r-- 1 root root 0 Nov  5 08:08 f19
+
+changing user:
+[root@ip-172-31-93-25 ~]# chown batman f110
+[root@ip-172-31-93-25 ~]# ll
+total 0
+-rw-r--r-- 1 root   root 0 Nov  5 08:08 f11
+-rw-r--r-- 1 batman root 0 Nov  5 08:08 f110 user changed from root to batman
+-rw-r--r-- 1 root   root 0 Nov  5 08:08 f12
+-rw-r--r-- 1 root   root 0 Nov  5 08:08 f13
+-rw-r--r-- 1 root   root 0 Nov  5 08:08 f14
+-rw-r--r-- 1 root   root 0 Nov  5 08:08 f15
+-rw-r--r-- 1 root   root 0 Nov  5 08:08 f16
+-rw-r--r-- 1 root   root 0 Nov  5 08:08 f17
+-rw-r--r-- 1 root   root 0 Nov  5 08:08 f18
+-rw-r--r-- 1 root   root 0 Nov  5 08:08 f19
+
+to change group name of a file or directory
+-----------------------------------------------
+syntax:
+chgrp <gname> <filename>
+[root@ip-172-31-93-25 ~]# chgrp avengers f110
+[root@ip-172-31-93-25 ~]# ll
+total 0
+-rw-r--r-- 1 root   root     0 Nov  5 08:08 f11
+-rw-r--r-- 1 batman avengers 0 Nov  5 08:08 f110
+
+
+
+
+ 
+ user management:
+ ----------------
+ user---create
+        delete
+		modify atributes of existing users
+		
+three type of users
+-----
+1)root user/ super user(default) uid=0 for root user
+2)system user(software--> users default with packages)(uid starts with 1 to 999)
+3)normal user(whom we create) (uid 1000 to 60,000)changes with version
+--------------------------
+user management---- two files
+
+1) cat /etc/passwd----->user related information is stored
+sathwik:x:1001:1001::/home/sathwik:/bin/bash
+sathwik----USERNAME
+:x----MASKED PASSWORD
+:1001-----UID
+:1001-----GID
+::----------COMMENT SECTION
+/home/sathwik------- user HOME DIRECTORY
+:/bin/bash------------SHELL 
+
+to check shell 
+echo $0
+
+
+2) cat /etc/shadow----->password related information
+		/etc/login.defs------admin level operations(default set)
+example
+useradd <username>
+passwd <username>------this encrypted passwd stored in file /etc/shadow
+--------------------------------------
+
+using command id gives information of the user
+
+[ec2-user@ip-172-31-93-25 ~]$ id
+uid=1000(ec2-user) gid=1000(ec2-user) groups=1000(ec2-user),4(adm),10(wheel),190(systemd-journal)
+
+===========================================
+to change exisiting user info
+------
+usermod -u 7777 sathwik
+----------------------------------------
+while creating user to change uid and gid 
+useradd -u 3000 chotu
+
+chotu:x:3000:3000::/home/chotu:/bin/bash
+
+-------------------------------------
+to add comment 
+ useradd -c "user comment" <username>
+ [ec2-user@ip-172-31-93-25 ~]$ sudo useradd -u 5000 -c "yuppy" batman
+[ec2-user@ip-172-31-93-25 ~]$ sudo cat /etc/passwd
+batman:x:5000:5000:yuppy:/home/batman:/bin/bash
+----------------------------------------------------- 
+ for exisiting user to add comment
+ usermod -c "comment" <username>
+ [ec2-user@ip-172-31-93-25 ~]$ sudo usermod -c "hero" sathwik
+[ec2-user@ip-172-31-93-25 ~]$ sudo cat /etc/passwd
+ sathwik:x:7777:1001:hero:/home/sathwik:/bin/bash
+ -----------------------------------------------------------
+ to change shell for new user
+ useradd -s /bin/sh(old /bin/bash)
+
+-----------------------------------------
+change home directory
+create dir
+mkdir abc
+
+useradd -d /abc <username>
+---------------------------------
+[ec2-user@ip-172-31-93-25 ~]$ sudo useradd -u 4000 -c "hero" -d /a -s /bin/sh superman
+
+usermod -u(user id edit)
+usermod -c(comment)
+usermod -d(user home directory)
+usermod -s(shell)
+superman:x:4000:4000:hero:/a:/bin/sh
+------------------------------------
+[root@ip-172-31-93-25 ~]# cat /etc/shadow----------> gives masked password information
+after creating password to user 
+
+batman:!!:19299:0:99999:7:::
+
+batman:!!:-----no password
+19299:  -----no pass-linux (1st jan 1970)-till date                           
+0:	min no days password required 
+99999:max no days password required
+7:password warning
+:: field taken care by admin
+	
+
+superman:$6$agKlEwwv$JuuRO173Mez6twq5OsNWrC9cQEO4BSI6cnqhZXVmJQVkQp3fsQ.PeJWSjtFSbmP.TMaHDZ49byFYr95IJsWJz/:19301:0:99999:7:::(with password user info)
+
+how to delete user:
+-------------------
+userdel <username>
+
+userdel -r <username> (forcefully, recursive)
+
+how to lock a password
+----------------------
+create user
+set pasword to user
+passwd -l <username> (lock user by root user)
+
+to unclock passw
+passwd -u <username>
+
+group management: 
+-----------------
+logical collection of system sources
+1)primary group
+2)secondary group
+
+usage:
+if many no of user are there then need to give same permission to all these users
+so these users are made into one group and then give permissions
+
+1)primary group ----when user is created then primary group is created
+                    cannot be alter the primary group
+					so need to create secondary group
+/etc/group----- group related info
+/etc/gshadow---- group passwd related info
+
+commands used in group:
+------------------------
+groupadd
+groupmod
+groupdel
+gpasswd
+
+how to find primary group or secondary group
+---------------------------------------------
+[root@ip-172-31-93-25 ~]# id batman
+uid=7778(batman) gid=7778(batman) groups=7778(batman)
+
+when info is displayed it is in primary group
+
+hero:!::userlist(it is created using groupadd)
+gname:masked passwd:gid:userlist
+
+[root@ip-172-31-93-25 ~]# id hero
+id: hero: no such user
+
+here the info is not shown then it is in secondary group
+
+check the masked passswd of group 
+/etc/gshadow--->passwd info of group
+
+
+how to change group name:
+-------------------------
+groupmod -n <newgname> <oldgname>
+
+[root@ip-172-31-93-25 ~]# groupmod -n avengers hero
+[root@ip-172-31-93-25 ~]# cat /etc/group
+
+
+batman:x:7778:
+avengers:x:4567:
+changed to avengers from hero
+
+to change group id
+groupmod -g 5678 avengers
+
+[root@ip-172-31-93-25 ~]# groupmod -g 5678 avengers
+[root@ip-172-31-93-25 ~]# cat /etc/group
+
+batman:x:7778:
+avengers:x:5678:
+
+to delete group
+----------------
+groupdel <gname>
+groupdel avengers
+
+to delete primary group
+groupdel -f <gname>
+--------------------------------
+avengers:!::
+gname:maksed passwd:g admin info :users list
+
+to set passwd to group:
+-----------------------
+gpasswd <gname>
+[root@ip-172-31-93-25 ~]# gpasswd avengers
+
+avengers:$6$xtlyU/6bPuf$bNjr7JjqMYKZtpyxd5eY7wpQuknq98ComsI8c3tPkTUHv9NRSiQFRclr74VjJ06GHPH6YHl/AULOP0Uyulago/::
+
+ 
+to remove passwd:
+----------------
+gpasswd -r <gname>
+ 
+[root@ip-172-31-93-25 ~]# gpasswd -r avengers
+[root@ip-172-31-93-25 ~]# cat /etc/gshadow
+
+avengers:::
+----------------------
+how to add single or multiple userr to group
+
+example:
+---------
+groupadd hello[root@ip-172-31-93-25 ~]# groupadd avengers
+
+
+useradd a1
+useradd a2
+useradd a3
+useradd a4
+useradd a5
+useradd a6
+
+[root@ip-172-31-93-25 ~]# useradd ironman
+[root@ip-172-31-93-25 ~]# useradd hulk
+[root@ip-172-31-93-25 ~]# useradd captainamerica
+[root@ip-172-31-93-25 ~]# useradd blackwidow
+[root@ip-172-31-93-25 ~]# cat /etc/passwd
+
+batman:x:7778:7778::/home/batman:/bin/bash
+ironman:x:7779:7779::/home/ironman:/bin/bash
+hulk:x:7780:7780::/home/hulk:/bin/bash
+captainamerica:x:7781:7781::/home/captainamerica:/bin/bash
+blackwidow:x:7782:7782::/home/blackwidow:/bin/bash
+
+
+
+adding user to group:
+---------------------------
+gpasswd -a <username> <gname>(-a adding user)\
+
+[root@ip-172-31-93-25 ~]# gpasswd -a ironman avengers
+Adding user ironman to group avengers
+[root@ip-172-31-93-25 ~]# gpasswd -a batman avengers
+Adding user batman to group avengers
+[root@ip-172-31-93-25 ~]# gpasswd -a hulk avengers
+Adding user hulk to group avengers
+[root@ip-172-31-93-25 ~]# gpasswd -a captainamerica avengers
+Adding user captainamerica to group avengers
+[root@ip-172-31-93-25 ~]# cat /etc/group
+
+avengers:x:5678:ironman,batman,hulk,captainamerica
+grouname:passwd:gid:users list
+
+add multiple users:
+-------------------
+syntax:
+gpasswd -M <username>,<username>,.....<username> <gname>(M =multiple users)
+
+[root@ip-172-31-93-25 ~]# gpasswd -M blackwidow avengers
+[root@ip-172-31-93-25 ~]# cat /etc/group
+
+avengers:x:5678:blackwidow
+
+when multiple users are added to agroup at a time the existing user in that goroup will deleted /overwritted)
+---------------------------------------
+
+To delete users from group:
+----------------------------
+syntax: gpasswd -d <username> <gname> (-d = delte user)
+
+[root@ip-172-31-93-25 ~]# gpasswd -d blackwidow avengers
+Removing user blackwidow from group avengers
+[root@ip-172-31-93-25 ~]# cat /etc/group
+
+avengers:x:5678:
+------------------------
+to make a user an admin in group
+
+syntax
+gpasswd -A <username> <gname>
+
+[root@ip-172-31-93-25 ~]# gpasswd -M hulk,batman,blackwidow,ironman avengers
+[root@ip-172-31-93-25 ~]# cat /etc/group
+
+avengers:x:5678:hulk,batman,blackwidow,ironman
+
+
+
+[root@ip-172-31-93-25 ~]# gpasswd -A ironman avengers
+
+[root@ip-172-31-93-25 ~]# cat /etc/gshadow
+
+avengers::ironman:hulk,batman,blackwidow,ironman
+gname ::admin:users list
+
+to remove admin from group:
+------------------------------
+syntax:
+gpasswd -A '' <gname>
+
+[root@ip-172-31-93-25 ~]# gpasswd -A '' avengers
+[root@ip-172-31-93-25 ~]# cat /etc/gshadow
+
+avengers:::hulk,batman,blackwidow,ironman
+
+------------------------------------------
+
+ssh:
+----
+secure shell host
+
+used for: connecting from one server to another server
+
+default port number: 22
+
+defalut congif file: /etc/ssh/sshd_config
+	 
+	 ssh connection
+   s1--------------s2
+  india           usa  
+  
+ syntax:
+ 
+connecting from one server1 to another server2
+ ssh username@ipaddress (username of server2 and ip address of server2)
+
+server1:
+--------
+set password to server1
+
+passwd<username>
+
+vi /etc/ssh/sshd_config ------>set passwordAuthentication yes
+
+after changing config file of any server the server has to be restarted
+
+service sshd restart
+or
+systemctl restart sshd
+
+---------------------------
+server2:
+--------
+set password to server1
+
+passwd<username>
+
+vi /etc/ssh/sshd_config ------>set passwordAuthentication yes
+                               :wq(save and exit)
+
+after changing config file of any server the server has to be restarted
+
+service sshd restart
+or
+systemctl restart sshd
+---------------------------------------
+now use command to connect server1 to server2
+
+ssh <userserver2>@<ip address of server 2)
+
+by this way we can connect from one server to another server
+------------------------------------------------------------------------
+
+from one server to another server while connecting 
+
+asking password
+
+all the time password cannot be used
+
+for this passwordless authenication connection should be established
+
+sudo su -
+
+ssh-keygen
+
+go and check in cd .ssh
+
+				ll
+				
+				can see generated pub and private keys
+				
+				
+root@master:~# cd .ssh
+root@master:~/.ssh# ll
+total 28
+drwx------ 2 root root 4096 Nov  5 11:14 ./
+drwx------ 5 root root 4096 Nov  5 12:17 ../
+-rw------- 1 root root  553 Nov  5 10:31 authorized_keys
+-rw------- 1 root root 2610 Nov  5 11:13 id_rsa
+-rw-r--r-- 1 root root  575 Nov  5 11:13 id_rsa.pub (these keys generated)
+-rw------- 1 root root 1120 Nov  5 12:13 known_hosts
+-rw-r--r-- 1 root root  142 Nov  5 10:38 known_hosts.old
+
+  
+the generated keys has to be copied to remote sever
+
+ssh-copy-id <remote username>@<remote ip address>
+
+try to login from server1
+
+ssh <remote username>@<remote serve ip address>
+
+
+-----------------------------------------------
+service commands:
+------------------
+service <servicename> start/stop/restart/reload/enable/status
+
+or 
+
+systemctl start/stop/restart/reload/enable/status <service name>
+
+
+-------------------------------------------------------------------
+
+symbolic links:-
+-----------------
+
+two types
+
+1)soft link---->to create short cut
+syntax----
+
+ln -s <source> <desination>
+
+example:
+create a file in /tmp/SLexample
+
+this file should be accessed at root level not into folder
+
+[ec2-user@master ~]$ sudo ln -s /tmp/SLexample /root/
+[ec2-user@master ~]$ sudo su -
+Last login: Sat Nov  5 13:43:19 UTC 2022 on pts/0
+[root@master ~]# ll
+total 0
+lrwxrwxrwx 1 root root 14 Nov  5 13:44 SLexample -> /tmp/SLexample
+
+if original file is deleted link file is also deleted 
+
+having diff inode numbers
+
+----------------------------------------------------------------------------
+
+2)hard link ----->to backup anydata
+
+syntax:
+------
+ln <source> <desination> 
+[ec2-user@master opt]$ sudo vi HLexample
+[ec2-user@master opt]$ sudo ln /opt/HLexample /root/
+[ec2-user@master opt]$ sudo su -
+Last login: Sat Nov  5 13:47:03 UTC 2022 on pts/0
+[root@master ~]# ll
+total 4
+-rw-r--r-- 2 root root 28 Nov  5 13:55 HLexample
+lrwxrwxrwx 1 root root 14 Nov  5 13:44 SLexample -> /tmp/SLexample
+[root@master ~]# ls -il([ec2-user@master opt]$ sudo vi HLexample
+[ec2-user@master opt]$ sudo ln /opt/HLexample /root/
+[ec2-user@master opt]$ sudo su -
+Last login: Sat Nov  5 13:47:03 UTC 2022 on pts/0
+[root@master ~]# ll
+total 4
+-rw-r--r-- 2 root root 28 Nov  5 13:55 HLexample
+lrwxrwxrwx 1 root root 14 Nov  5 13:44 SLexample -> /tmp/SLexample
+[root@master ~]# ls -il([ec2-user@master opt]$ sudo vi HLexample
+[ec2-user@master opt]$ sudo ln /opt/HLexample /root/
+[ec2-user@master opt]$ sudo su -
+Last login: Sat Nov  5 13:47:03 UTC 2022 on pts/0
+[root@master ~]# ll
+total 4
+-rw-r--r-- 2 root root 28 Nov  5 13:55 HLexample
+lrwxrwxrwx 1 root root 14 Nov  5 13:44 SLexample -> /tmp/SLexample
+[root@master ~]# ls -il(to display inode numbers)
+total 4
+12584427 -rw-r--r-- 2 root root 28 Nov  5 13:55 HLexample
+  328088 lrwxrwxrwx 1 root root 14 Nov  5 13:44 SLexample -> /tmp/SLexample
+
+
+inode number same as in source file
+[ec2-user@master opt]$ ls -a\il
+total 4
+12583856 drwxr-xr-x  4 root root  44 Nov  5 13:55 .
+      96 dr-xr-xr-x 18 root root 257 Nov  5 13:11 ..
+ 4470082 drwxr-xr-x  4 root root  33 Oct 12 18:57 aws
+12584427 -rw-r--r--  2 root root  28 Nov  5 13:55 HLexample
+13271131 drwxr-xr-x  2 root root   6 Aug 16  2018 rh
+
+
+when we edit the file in source area or destination are automatically on other path the file get updated
+
+if we delete file in source area then at other path is not deleted it is a backup file
+-----------------------------------------------------------
+
+giving admin permission to normal users
+
+vi /etc/sudoers
+
+root   ALL=(ALL)     ALL
+<USER> ALL=(ALL)     ALL
+      ALL USR=ALL TERMINALS     ALL COMMANDS
+	  
+--------------------------------------------------
+copy from one server to another server
+
+establish ssh connection 
+
+then select file in server1
+
+copied from server1
+
+scp <filename> <serv2 username>@<serv2 ipaddress>:<desinationpath>
+
+[root@master ~]# scp copyremote ec2-user@172.31.27.145:/home/ec2-user
+copyremote                                    100%   39    18.1KB/s   00:00
+
+copied to server2
+
+[ec2-user@server ~]$ ll
+total 4
+-rw-r--r-- 1 ec2-user ec2-user 39 Nov  5 15:31 copyremote
+
+---------------------------------------------------------------
+
+find command: file or directory
+-------------
+syntax:
+
+find <location path> -options <file/dir name>
+
+ex: 
+
+find /home -name <filename>
+
+find . -name <filename> (. indicates present location)
+
+find / -iname <filename>(ignore case sentitive)
+
+find / -type f -name "*.log"(here file type finding .log extentions files)
+
+search based on permission:
+---------------------------
+find /root -type f -perm 0666 -print 
+
+change permission of all files
+
+find /root -type f -perm 0644 -exec chmod 622 {} \;
+           -type d------------------------------------->for directory
+---------------------------------------------------
+ 
+search with inode number:
+-------------------------
+check : ls -li/il
+
+find /root -inum <no>
+
+------------------------------------------------------------
+find based on user name 
+---------------------------
+
+find /root -user <usrname>
+
+find based on group name
+----------------------------
+
+find / -group <grp name>
+
+--------------------------------------------------
+based on inum deleteing file
+
+find . -inum <no> -exec rm -i {} \;
+
+in this way can delete
+--------------------------------------------------
+find based on file size
+-----------------------
+find . -size 1M
+find . -size +1M
+
+find . -size +10M -exec rm -rf {} \;
+
+----------------------------------------------------
+based on size range display
+
+find . -size +50M -size -100M
+
+-----------------------------------------------------
+find based on time
+
+
+
+
+-------------------------------------------------------
+
+grep :
+
+to search any pattern 
+
+grep 'aws' <file>  search aws in that file 
+
+cat <file> | grep aws (used in real time)
+
+to ignore case sentitive give -i
+
+grep -i 'aws' <file>
+
+search multiple words:
+-----------------------
+
+grep -iE 'linux|windows' <file> (ignore case sentive using -i)
+
+egrep 'linux|windows' <file>
+
+display match words :
+--------------------------
+
+grep -n 'ANSIBLE' file
+
+grep -ni 'ANSIBLE' file
+
+ignore this word and display everything in the file
+-----------------------------------------------------
+grep -vi 'ANSIBLE' file
+
+display 2 lines after ansible word
+-----------------------------
+grep -A 2 'ansible' file
+
+before 2 lines
+grep -B 2 'ansible' file
+
+------------------------------------------------
+based on last word in the sentence finding the entire line'
+
+grep 'tool$' file
+
+shows the line till the word tool$
+------------------------------------------------------
+
+cat filename | grep <word>	
+
+(pipe '|' makes) this command output | it takes as input
+
+search for word in the file 
+
+cat filename | grep <word> | grep <word>
+
+ll | grep <file>(first list the files it is out put then grep takes it as input to search)
+-------------------------------------------------------
+ping command:
+-------------
+ping www.google.com
+
+to check  the server is reachable or not
+-----------------------------------------------------
+memory information:
+-------------------
+Ram information
+free -m(mega bytes it shows )
+     -b(bytes)
+	 -k(kilo bytes)
+----------------------------------------------------
+uptime command :
+----------------
+system up its time
+
+[ec2-user@master ~]$ uptime
+ 05:16:34 up 11 min,  1 user,  load average: 0.00, 0.00, 0.00
+----------------------------------------------------------------
+
+to see file system information:
+-------------------------------
+df -h
+   -k
+   -m
+
+[ec2-user@master ~]$ df -h
+Filesystem      Size  Used Avail Use% Mounted on
+devtmpfs        474M     0  474M   0% /dev
+tmpfs           483M     0  483M   0% /dev/shm
+tmpfs           483M  404K  482M   1% /run
+tmpfs           483M     0  483M   0% /sys/fs/cgroup
+/dev/xvda1      8.0G  1.6G  6.5G  20% /
+tmpfs            97M     0   97M   0% /run/user/1000
+
+---------------------------------------------------------------
+whoami command:
+---------------
+which user we are logged in
+
+[ec2-user@master ~]$ whoami
+ec2-user
+
+----------------------------------------------------------------
+package management:
+--------------------
+intalling any software in linux server
+upgrade
+remove
+
+rhel -----installer 
+'yum'------------ here it download its dependencies
+'rpm'-------------drawback dependencies install manually
+
+to check the package is installed or not
+
+arpm -qa packagename(query all)
+rpm -qa
+rpm -qa --last (to check its time of instalation)
+rpm -Uvh packagename(U=udate and install ,v= verbose, h=hashmode)
+rpm -qc packagename(qc =query configuration)
+rpm -qd packagename(qd=query documentation)
+rpm -ivh packagename(to install any package)(need packages to install)
+rpm -e package(to remove a package)
+
+
+2.yum server configuration or dnf install git
+yum update (before installation need to update)
+yum install git -y(y = confirmation)
+yum remove <packagename>
+yum update <packagename>
+yum repolist
+yum repolist all(to check repos enable or disable)
+
+yum whatprovides ifconfig(it shows which package is installed to execute the command)
+
+[ec2-user@master ~]$ yum whatprovides ifconfig
+Loaded plugins: extras_suggestions, langpacks, priorities, update-motd
+net-tools-2.0-0.22.20131004git.amzn2.0.2.x86_64 : Basic networking tools
+Repo        : installed
+Matched from:
+Filename    : /usr/sbin/ifconfig
+
+yum serach <packagename>
+
+yum clean all (to remove cache)
+
+yum list installed(to check the installed packages)
+
+yum info packagename(to check package info)
+
+yum update packagename(to update package)
+
+
+ 
+
+
+debian ------installer 'apt-get'
+
+need to mount the software (iso files)
+ 
+to mount command:
+-----------------
+cd /dev/sr0 /mnt
+       iso image file
+
+
+job scheduling:
+---------------
+used ,to run a job at certain time say 2am ,without manual for that need to scheduling
+
+can done by 2 ways 
+1.at : for one time scheduling 
+2.cron : repetitive scheduling (used backup,unwanted files remove to print log files)
+/etc/cron.d/
+[ec2-user@master ~]$ cd /etc/cron.d
+[ec2-user@master cron.d]$
+[ec2-user@master cron.d]$ ll
+total 16
+-rw-r--r-- 1 root root 128 Jan 16  2020 0hourly
+-rw-r--r-- 1 root root 108 Aug  2  2018 raid-check
+-rw------- 1 root root 235 Dec 17  2019 sysstat
+-rw-r--r-- 1 root root 194 Jun  8  2021 update-motd
+
+
+[ec2-user@master cron.d]$ sudo systemctl status crond or service crond status
+● crond.service - Command Scheduler
+   Loaded: loaded (/usr/lib/systemd/system/crond.service; enabled; vendor preset: enabled)
+   Active: active (running) since Mon 2022-11-07 05:51:41 UTC; 29min ago
+ Main PID: 3528 (crond)
+   CGroup: /system.slice/crond.service
+           └─3528 /usr/sbin/crond -n
+
+at: one time activity
+---
+ at  06:26
+at> rm -rf f11
+at> <EOT>     -------------ctl+d---to save exit----------------------------------
+job 2 at Mon Nov  7 06:26:00 2022
+[ec2-user@master ~]$ date
+Mon Nov  7 06:25:45 UTC 2022
+[ec2-user@master ~]$ ll
+total 0
+-rw-rw-r-- 1 ec2-user ec2-user 0 Nov  7 05:54 f1
+-rw-rw-r-- 1 ec2-user ec2-user 0 Nov  7 05:55 f11
+[ec2-user@master ~]$ date
+Mon Nov  7 06:26:07 UTC 2022
+[ec2-user@master ~]$ ll
+total 0
+-rw-rw-r-- 1 ec2-user ec2-user 0 Nov  7 05:54 f1
+
+-----------------------------------------------------------
+to check any scheduling using crontab:
+---------------------------------------
+[ec2-user@master ~]$ crontab -l
+no crontab for ec2-user
+[ec2-user@master ~]$ sudo crontab -l
+no crontab for root
+
+how to create crontab:
+-----------------------
+crontab -e -u root (-e edit -u username)
+
+syntax:
+------
+min of     hours of   days of  month of  dayof
+hours       day        month     year     week      task/command
+
+
+[ec2-user@master ~]$ cat /etc/crontab
+SHELL=/bin/bash
+PATH=/sbin:/bin:/usr/sbin:/usr/bin
+MAILTO=root
+
+# For details see man 4 crontabs
+
+# Example of job definition:
+# .---------------- minute (0 - 59)
+# |  .------------- hour (0 - 23)
+# |  |  .---------- day of month (1 - 31)
+# |  |  |  .------- month (1 - 12) OR jan,feb,mar,apr ...
+# |  |  |  |  .---- day of week (0 - 6) (Sunday=0 or 7) OR sun,mon,tue,wed,thu,fri,sat
+# |  |  |  |  |
+# *  *  *  *  * user-name  command to be executed
+
+*  *  *  *  * user-name  command to be executed
+
+crontab -e -u root
+
+get into editor
+
+in command mode to insert mode 
+
+24 12 * * * rm -rf sudoers  -----> at this time sudoers file be deleted every
+                                   using '*'  ever day , month , week
+crontab: installing new crontab
+
+using crontab.guru can set the time 
+
+
+to remove crontab:
+---------------------
+crontab -r
+
+------------------------------------------------------------------
+
+kernal version
+uname -r 
+
+----------------------
+
+who 
+
+default user with whom logged in
+------------------------------------
+w  command 
+
+user and its login info
+------------------------------------
+date
+
+current time displayed
+
+-----------------------------------------
+cal 
+
+to display calender
+
+-------------------------------------
+last reboot
+
+last reboot history
+
+-------------------------------------
+cat /proc/cpuinfo
+
+gives cpu information
+---------------------------------------
+memory info
+
+cat proc/meminfo
+
+free -m (RAM information)
+-------------------------------------
+process management:
+------------------
+ps (display running process)
+
+ps -a (background running processors)
+
+ps -ef(entire system processors)
+
+ps -ef | more(page wise display)
+
+ps -ef | grep java(get process id)
+
+kill -9 pid (to kill process)
+
+ps -aux | more(memory utilised by cpu)
+
+top-->cpu utilisation (same like task manager == background processors ,load avg ,total tasks)
+
+      zombie process (when parent process id is killed child process id is running)
+
+      
+	 to set high priority ----->we set nice value
+
+netstat -ntlp (protocols will be displayed)
+
+[ec2-user@master ~]$ netstat -ntlp
+(No info could be read for "-p": geteuid()=1000 but you should be root.)
+Active Internet connections (only servers)
+Proto Recv-Q Send-Q Local Address           Foreign Address         State       PID/Program name
+tcp        0      0 0.0.0.0:111             0.0.0.0:*               LISTEN      -
+tcp        0      0 0.0.0.0:22              0.0.0.0:*               LISTEN      -
+tcp        0      0 127.0.0.1:25            0.0.0.0:*               LISTEN      -
+tcp6       0      0 :::111                  :::*                    LISTEN      -
+tcp6       0      0 :::22                   :::*                    LISTEN  
+--------------------------------------------------------------------------------------
+
+netstat -nr(gives gateway information)
+
+[ec2-user@master ~]$ netstat -nr
+Kernel IP routing table
+Destination     Gateway         Genmask         Flags   MSS Window  irtt Iface
+0.0.0.0         172.31.16.1     0.0.0.0         UG        0 0          0 eth0
+169.254.169.254 0.0.0.0         255.255.255.255 UH        0 0          0 eth0
+172.31.16.0     0.0.0.0         255.255.240.0   U         0 0          0 eth0
+
+----------------------------------------------------------------------
+
+history command 
+
+gives what are the commands that we used will be displayed
+
+---------------------------------------------------------
+
+io directions:
+------------=--
+lshw  ----->hardware information
+
+lshw > output(to copy lshw input to another file)
+
+lshw | cat > output1
+
+------------------------------------------------------------
+sed command :
+----------------
+create a file using vi
+
+file content example be
+hello world 
+how are you
+thank you
+this is command for vim
+vi editor 
+hello world
+
+sed (stream editor)(replace word with another word)
+
+sed 's/world/country/' filename
+
+
+replace word but the actual file remains same
+
+--------------------------------------------------------
+to change real in file 
+
+sed -i 's/world/country/g' filename(changes in actual file too)g=---entire file /globe
+
+cat file name 
+
+-----------------------------------------
+fdisk -l------------> display disk partition
+or 
+lsblk
+
+
+dmesg ------> when booting system messages will be dispalyed
+--------------------------------------------------
+
+dmidecode--------> display hardware information from bios
+
+cut command:
+--------------
+to print coloumn wise 
+
+tail -5 /etc/passwd | cut -d: -f1,2,3,....
+
+[ec2-user@master ~]$ tail -5 /etc/passwd | cut -d: -f1,2,3,4
+postfix:x:89:89
+chrony:x:996:994
+tcpdump:x:72:72
+ec2-user:x:1000:1000
+chot:x:1001:1001
+[ec2-user@master ~]$ tail -5 /etc/passwd | cut -d: -f1,2,3,4
+
+

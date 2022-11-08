@@ -1,0 +1,22 @@
+
+
+
+Modules in ansible
+1.command (linux commands)
+2.shell
+3.ping
+4.user
+5.copy (from controller to remote servers)
+6.fetch (it copy data from remote to controller opp of copy module)
+7.apt (ubuntu)
+8.yum (redhat)
+9.service
+10.file
+11.git (cloning into remote servers)
+12.get_url (used to download from web to remote servers)
+13.uri (it is like wget command to download the service like httpd)
+14.stat
+15.debug
+16.replace
+17.include
+18.pause
